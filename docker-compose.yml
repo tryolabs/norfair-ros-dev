@@ -1,0 +1,9 @@
+services:
+  ros:
+    image: ros-image
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: tail -f /dev/null
+    volumes:
+      - .:/root
