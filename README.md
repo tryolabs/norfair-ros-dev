@@ -2,9 +2,11 @@
 
 This repo is a dev environment for the development of the Norfair ROS node. It has 3 ROS packages: darknet_ros, norfair-ros, and publisher
 
-darknet_ros: Yolo Detector
-norfair-ros: Norfair ROS node (Git submodule)
-publisher: Iterate over a video and publish it into the detector node in the correct format
+`publisher`: Iterate over a video and publish it into the `camera/rgb/image_raw` topic, the `darknet_ros` node is subscribed to this topic.
+
+`darknet_ros`: Yolo Detector publishes the detections on the `darknet_ros/bounding_boxes` topic.
+
+`norfair-ros`: Norfair ROS node, subscribe to the `darknet_ros/bounding_boxes` topic and publish the Norfair tracking results on the `norfair/detections` topic.
 
 ## How to build
 
@@ -56,4 +58,4 @@ To start the publisher node run the following command:
 rosrun publisher publisher.py
 ```
 
-Keep in mind that you need to upload a video inside this folder and adapt the path in the `publisher.py` file.
+Keep in mind that you need to upload a video inside the `publisher/src` folder and adapt the path in the `publisher.py` file.
