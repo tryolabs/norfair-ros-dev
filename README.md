@@ -44,14 +44,16 @@ If the execution is fine, you can start the `norfair-ros` node to generate the t
 
 To start the `norfair-ros` node run the following command:
 
-``
+```
+rosrun norfair_ros run.py
+```
 
 At this time you can start the `publisher` node to publish into the detector topic and generate detections to be processed with the `norfair-ros` node.
 
 To start the publisher node run the following command:
 
 ```
-cd /root/catkin_ws/src/publisher/src && rosrun publisher publisher.py
+rosrun publisher publisher.py
 ```
 
 Keep in mind that you need to upload a video inside this folder and adapt the path in the `publisher.py` file.

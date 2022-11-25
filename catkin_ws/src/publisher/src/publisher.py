@@ -12,7 +12,7 @@ def talker():
     pub = rospy.Publisher("camera/rgb/image_raw", Image, queue_size=1)
     rospy.init_node("talker")
     rate = rospy.Rate(10)  # 10hz
-    video = Video(input_path="example.mp4")
+    video = Video(input_path="/root/catkin_ws/src/publisher/src/example.mp4")
 
     bridge = CvBridge()
 
