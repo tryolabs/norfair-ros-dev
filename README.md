@@ -24,11 +24,11 @@ Inside the Docker container run the following commands
 source /opt/ros/noetic/setup.bash
 # Compile
 catkin_make
-# Set environment variables used by ROS
+# Build ros messages
 . devel/setup.bash
 ```
 
-## How to run
+## How to run each node
 
 Before running the `darknet_ros` you need to download the model weights with the following command:
 
@@ -59,3 +59,11 @@ rosrun publisher publisher.py
 ```
 
 Keep in mind that you need to upload a video inside the `publisher/src` folder and adapt the path in the `publisher.py` file.
+
+# How to run the entire dev environment
+
+If you like to start the three nodes with only one command, you can run the following inside the docker container
+
+```
+roslaunch startup dev.launch
+```
