@@ -1,0 +1,7 @@
+<launch>
+
+    <include file="/root/catkin_ws/src/publisher/launch/publisher_node.launch"/>
+    <include file="/root/catkin_ws/src/darknet_ros/darknet_ros/launch/darknet_ros.launch"/>
+    <include file="/root/catkin_ws/src/norfair-ros/launch/norfair_node.launch"/>
+
+</launch>

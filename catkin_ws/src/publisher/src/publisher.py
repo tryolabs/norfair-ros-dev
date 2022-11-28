@@ -10,7 +10,7 @@ from sensor_msgs.msg import Image
 
 def talker():
     pub = rospy.Publisher("camera/rgb/image_raw", Image, queue_size=1)
-    rospy.init_node("talker")
+    rospy.init_node("publisher_node")
     rate = rospy.Rate(10)  # 10hz
     video = Video(input_path="/root/catkin_ws/src/publisher/src/example.mp4")
 
