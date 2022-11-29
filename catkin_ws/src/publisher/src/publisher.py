@@ -1,10 +1,8 @@
 #!/usr/bin/env python3
 # license removed for brevity
-import cv2
-import norfair
 import rospy
 from cv_bridge import CvBridge
-from norfair import Detection, Paths, Tracker, Video
+from norfair import Video
 from sensor_msgs.msg import Image
 
 
@@ -17,7 +15,7 @@ def talker():
     bridge = CvBridge()
 
     for frame in video:
-        image_message = bridge.cv2_to_imgmsg(frame, encoding="rgb8")
+        image_message = bridge.cv2_to_imgmsg(frame, encoding="bgr8")
 
         pub.publish(image_message)
         rate.sleep()
