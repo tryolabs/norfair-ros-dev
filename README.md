@@ -33,7 +33,7 @@ catkin_make
 Before running the `darknet_ros` you need to download the model weights with the following command:
 
 ```
-wget http://pjreddie.com/media/files/yolov2-tiny-voc.weights -P /root/catkin_ws/src/darknet_ros/darknet_ros/yolo_network_config/weights
+wget http://pjreddie.com/media/files/yolov2-tiny.weights -P /root/catkin_ws/src/darknet_ros/darknet_ros/yolo_network_config/weights
 ```
 
 After that you can start the `darknet_ros` node with the following command:
