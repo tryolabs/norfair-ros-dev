@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-# license removed for brevity
+# cv2 fix some CvBridge errors
+import cv2
 import rospy
 from cv_bridge import CvBridge
 from norfair import Video
