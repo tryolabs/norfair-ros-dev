@@ -6,7 +6,7 @@ This repo is a dev environment for the development of the Norfair ROS node. It h
 
 `darknet_ros`: Yolo Detector publishes the detections on the `darknet_ros/bounding_boxes` topic.
 
-`norfair-ros`: Norfair ROS node, subscribe to the `darknet_ros/bounding_boxes` topic and publish the Norfair tracking results on the `norfair/detections` topic.
+`norfair-ros`: Norfair ROS node has a converter node to unify different types of input messages to the one accepted by Norfair. Internally Norfair is subscribe to the `norfair/converter` topic and publishes the Norfair tracking results on the `norfair/detections` topic.
 
 ## How to build
 
@@ -47,7 +47,7 @@ If the execution is fine, you can start the `norfair-ros` node to generate the t
 To start the `norfair-ros` node run the following command:
 
 ```
-rosrun norfair_ros run.py
+roslaunch norfair_ros norfair_node.launch
 ```
 
 At this time you can start the `publisher` node to publish into the detector topic and generate detections to be processed with the `norfair-ros` node.
@@ -55,14 +55,14 @@ At this time you can start the `publisher` node to publish into the detector top
 To start the publisher node run the following command:
 
 ```
-rosrun publisher publisher.py
+roslaunch publisher publisher_node.launch
 ```
 
 Keep in mind that you need to upload a video inside the `publisher/src` folder and adapt the path in the `publisher.py` file.
 
 # How to run the entire dev environment
 
-If you like to start the three nodes with only one command, you can run the following inside the docker container
+If you like to start the three packages with only one command, you can run the following inside the docker container
 
 ```
 roslaunch startup dev.launch
