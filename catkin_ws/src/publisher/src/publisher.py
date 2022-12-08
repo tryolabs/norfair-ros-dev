@@ -8,9 +8,12 @@ from sensor_msgs.msg import Image
 
 
 def talker():
+    """
+    Iterate over a video and publish each frame as a ROS Image message.
+    """
     pub = rospy.Publisher("camera/rgb/image_raw", Image, queue_size=1)
     rospy.init_node("publisher_node")
-    rate = rospy.Rate(10)  # 10hz
+    rate = rospy.Rate(1)  # Adapt the hz value to your needs
     video = Video(input_path="/root/catkin_ws/src/publisher/src/example.mp4")
 
     bridge = CvBridge()
@@ -26,4 +29,4 @@ if __name__ == "__main__":
     try:
         talker()
     except rospy.ROSInterruptException:
-        pass
+        rospy.loginfo("Publisher node terminated.")
