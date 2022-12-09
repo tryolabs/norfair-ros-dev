@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>publisher</name>
-  <version>0.0.0</version>
+  <version>0.1.0</version>
   <description>Package to publish each frame in the correct format to the detector.</description>
 
-  <maintainer email="dfernandez@tryolabs.com">Diego Fernandez</maintainer>
+  <maintainer email="hello@tryolabs.com">Tryolabs</maintainer>
 
   <license>MIT</license>
 

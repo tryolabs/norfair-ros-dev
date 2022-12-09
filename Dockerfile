@@ -11,4 +11,4 @@ RUN sudo apt -y update && \
 RUN pip install norfair
 
 # create a basic workspace
-WORKDIR /root/catkin_ws/src
+WORKDIR /root/catkin_ws
