@@ -1,6 +1,10 @@
-# Dev repo to create a Norfair ROS node
+# Full environment to run the Norfair ROS node
 
-This repo is a dev environment for the development of the Norfair ROS node. It has 3 ROS packages: darknet_ros, norfair-ros, and publisher
+This repo is a dev environment for the development of the Norfair ROS node. It has 3 ROS packages: `darknet_ros`, `norfair-ros`, and `publisher`.
+
+In the [`norfair-ros`](https://github.com/tryolabs/norfair-ros) repository you can find a piece of more detailed information about the node.
+
+# Basic information
 
 `publisher`: Iterate over a video and publish it into the `camera/rgb/image_raw` topic, the `darknet_ros` node is subscribed to this topic.
 
@@ -8,7 +12,7 @@ This repo is a dev environment for the development of the Norfair ROS node. It h
 
 `norfair-ros`: Norfair ROS node has a converter node to unify different types of input messages to the one accepted by Norfair. Internally Norfair is subscribe to the `norfair/converter` topic and publishes the Norfair tracking results on the `norfair/detections` topic.
 
-## How to build
+# How to build
 
 Build the Docker Image and run the container
 
@@ -28,7 +32,17 @@ catkin_make
 . devel/setup.bash
 ```
 
-## How to run each node
+# How to run all nodes
+
+If you like to start the three packages with only one command, you can run the following inside the docker container
+
+```
+roslaunch startup dev.launch
+```
+
+This command launches the 3 packages and starts the tracking process to the detections provided by the detector.
+
+# How to run each node
 
 Before running the `darknet_ros` you need to download the model weights with the following command:
 
@@ -59,11 +73,3 @@ roslaunch publisher publisher_node.launch
 ```
 
 Keep in mind that you need to upload a video inside the `publisher/src` folder and adapt the path in the `publisher.py` file.
-
-# How to run the entire dev environment
-
-If you like to start the three packages with only one command, you can run the following inside the docker container
-
-```
-roslaunch startup dev.launch
-```
