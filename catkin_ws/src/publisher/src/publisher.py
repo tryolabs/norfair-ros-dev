@@ -11,10 +11,15 @@ def talker():
     """
     Iterate over a video and publish each frame as a ROS Image message.
     """
-    pub = rospy.Publisher("camera/rgb/image_raw", Image, queue_size=1)
+    # Load parameters
+    publishers = rospy.get_param("publisher_publishers")
+    image_publisher = publishers["images"]
+    publisher_setup = rospy.get_param("publisher_setup")
+
+    pub = rospy.Publisher(image_publisher["topic"], Image, queue_size=image_publisher["queue_size"])
     rospy.init_node("publisher_node")
     rate = rospy.Rate(1)  # Adapt the hz value to your needs
-    video = Video(input_path="/root/catkin_ws/src/publisher/src/example.mp4")
+    video = Video(input_path=publisher_setup["input_video"])
 
     bridge = CvBridge()
 

@@ -2,4 +2,6 @@
 
     <node pkg="publisher" name="publisher" type="publisher.py"/>
 
+    <rosparam file="$(find publisher)/config/publisher.yaml"/>
+
 </launch>

@@ -1,0 +1,7 @@
+publisher_publishers:
+  images:
+    topic: "camera/rgb/image_raw"
+    queue_size: 1
+
+publisher_setup:
+  input_video: "/root/catkin_ws/src/publisher/src/example.mp4"
