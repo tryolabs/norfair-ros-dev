@@ -5,3 +5,4 @@ publisher_publishers:
 
 publisher_setup:
   input_video: "/root/catkin_ws/src/publisher/src/example.mp4"
+  rate: 10

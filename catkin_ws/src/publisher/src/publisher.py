@@ -18,7 +18,7 @@ def talker():
 
     pub = rospy.Publisher(image_publisher["topic"], Image, queue_size=image_publisher["queue_size"])
     rospy.init_node("publisher_node")
-    rate = rospy.Rate(1)  # Adapt the hz value to your needs
+    rate = rospy.Rate(publisher_setup["rate"])  # Adapt the hz value to your needs
     video = Video(input_path=publisher_setup["input_video"])
 
     bridge = CvBridge()
