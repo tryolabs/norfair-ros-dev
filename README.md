@@ -1,6 +1,6 @@
 # Full environment to run the Norfair ROS node
 
-This repo builds a dev environment for the development of the Norfair ROS node. It has 3 ROS packages: `darknet_ros`, `norfair_ros`, and `publisher`.
+This repo builds a dev environment for the development of the Norfair ROS package. It has 3 ROS packages: `darknet_ros`, `norfair_ros`, and `publisher`.
 
 In the [`norfair-ros`](https://github.com/tryolabs/norfair-ros) repository you can find a piece of more detailed information about this package.
 
@@ -10,7 +10,7 @@ In the [`norfair-ros`](https://github.com/tryolabs/norfair-ros) repository you c
 
 `darknet_ros`: Yolo Detector publishes the detections on the `darknet_ros/bounding_boxes` topic.
 
-`norfair_ros`: Norfair ROS node has a converter node to unify different types of input messages to the one accepted by Norfair. Internally Norfair is subscribe to the `norfair/converter` topic and publishes the Norfair tracking results on the `norfair/detections` topic.
+`norfair_ros`: Norfair ROS node has a converter node to unify different types of input messages to the one accepted by Norfair. Internally Norfair is subscribe to the `norfair/input` topic and publishes the Norfair tracking results on the `norfair/output` topic.
 
 # How to build
 
@@ -60,13 +60,13 @@ roslaunch darknet_ros darknet_ros.launch
 
 If the execution is fine, you can start the `norfair_ros` package to generate the tracking process with the output of the detector.
 
-To start the `norfair-ros` package run the following command:
+To start the `norfair_ros` package run the following command:
 
 ```
 roslaunch norfair_ros norfair_node.launch
 ```
 
-At this time you can start the `publisher` package to publish into the detector topic and generate detections to be processed with the `norfair-ros` package.
+At this time you can start the `publisher` package to publish into the detector topic and generate detections to be processed with the `norfair_ros` package.
 
 To start the publisher package run the following command:
 
