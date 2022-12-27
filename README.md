@@ -1,10 +1,16 @@
 # Full environment to run the Norfair ROS node
 
-This repo builds a dev environment for the development of the Norfair ROS package. It has 3 ROS packages: `darknet_ros`, `norfair_ros`, and `publisher`.
+This repo builds a dev environment for the development of the Norfair ROS package.
+
+To build the environment Docker and Docker Compose are required.
+
+We use the `ros:noetic` image. This image is built on `Ubuntu 20.04`.
 
 In the [`norfair-ros`](https://github.com/tryolabs/norfair-ros) repository you can find a piece of more detailed information about this package.
 
 # Basic information
+
+This environment has 3 ROS packages: `publisher`, `darknet_ros`, and `norfair_ros`.
 
 `publisher`: Iterate over a video and publishes each frame into the `camera/rgb/image_raw` topic, the `darknet_ros` node is subscribed to this topic.
 
@@ -32,6 +38,20 @@ catkin_make
 . devel/setup.bash
 ```
 
+# Setup
+
+Before running the entire environment you need to load a video to process. Keep in mind that this environment is based on a video file and not on a camera. You can easily change the publisher loop to publish a frame from a camera.
+
+To load a video you need to upload it to the `publisher/src` folder and adapt the parameter `input_video` in the [config file](/catkin_ws/src/publisher/config/publisher.yaml). Now, `mp4` and `avi` are supported.
+
+Another required step is to download the model weights for the `darknet_ros` package. To do that you need to run the following command inside the docker container:
+
+```
+wget http://pjreddie.com/media/files/yolov2-tiny.weights -P /root/catkin_ws/src/darknet_ros/darknet_ros/yolo_network_config/weights
+```
+
+You can find more information to select other models in the [darknet_ros](https://github.com/leggedrobotics/darknet_ros) repository.
+
 # How to run all packages
 
 If you like to start the three packages with only one command, you can run the following inside the docker container
@@ -42,17 +62,11 @@ roslaunch startup dev.launch
 
 This command launches the 3 packages and starts the tracking process to the detections provided by the detector.
 
-> :warning: Read the following section to set properly each package.
+> :warning: Make the setup before running this command.
 
 # How to run each package
 
-Before running the `darknet_ros` you need to download the model weights with the following command:
-
-```
-wget http://pjreddie.com/media/files/yolov2-tiny.weights -P /root/catkin_ws/src/darknet_ros/darknet_ros/yolo_network_config/weights
-```
-
-After that you can start the `darknet_ros` package with the following command:
+To start the `darknet_ros` package you can execute the following command:
 
 ```
 roslaunch darknet_ros darknet_ros.launch
@@ -73,5 +87,3 @@ To start the publisher package run the following command:
 ```
 roslaunch publisher publisher_node.launch
 ```
-
-Keep in mind that you need to upload a video inside the `publisher/src` folder and adapt the path in the `publisher.py` file.
